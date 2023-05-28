@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dojo Survey</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .form-container {
+            width: 50%;
+
+            padding: 20px;
+            background-color: #403f3f;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="form-container">
+            <form action="/result/save" method="post">
+                <h1 style="color: #1DA1F2;">Dojo Survey</h1>
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <p style="color: red;">{{message}}</p>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+                <div class="form-group">
+                    <label for="name" style="color: #1DA1F2;">Name:</label>
+                    <input type="text" class="form-control" name="name">
+                    <label for="location" style="color: #1DA1F2;">Location:</label>
+                    <select class="form-control" name="location">
+                        <option selected >--- Choose a location ---</option>
+                        <option value="Online">Online</option>
+                        <option value="Houston">Houston</option>
+                        <option value="Seattle">Seattle</option>
+                        <option value="Chicago">Chicago</option>
+                        <option value="Burkank">Burkank</option>
+                        <option value="Bellevue">Bellevue</option>
+                    </select>
+                    <label for="language" style="color: #1DA1F2;">Favorite programming language:</label>
+                    <select class="form-control" name="language">
+                        <option selected >--- Choose a programming language ---</option>
+                        <option value="HTML">HTML</option>
+                        <option value="CSS">CSS</option>
+                        <option value="JavaScript">JavaScript</option>
+                        <option value="Python">Python</option>
+                        <option value="C#">C#</option>
+                    </select>
+                    <label for="database" style="color: #1DA1F2;">Choose a favorite relational database:</label>
+                    <div class="form-group">
+                        <input type="radio" name="database" value="MySQL">
+                        <label for="mysql" style="color: #1DA1F2;">MySQL </label>
+                        <input type="radio" name="database" value="Oracle">
+                        <label for="oracle" style="color: #1DA1F2;">Oracle </label>
+                        <input type="radio" name="database" value="Postgres">
+                        <label for="postgres " style="color: #1DA1F2;">Postgres </label>
+                    </div>
+                    <label for="framework" style="color: #1DA1F2;">Framework:</label>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="bootstrap" name="framework">
+                        <label class="form-check-label" for="framework" style="color: #1DA1F2;">Bootstrap</label>
+                    </div>
+                    <label for="comment" style="color: #1DA1F2;">Comment:</label>
+                    <textarea class="form-control" name="comment" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary"
+                    style="color: #1DA1F2; background-color: #2c2b2b;">Submit</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

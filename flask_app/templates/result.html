@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dojo Survey</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .form-container {
+            width: 50%;
+            height:32rem;
+            padding: 20px;
+            background-color: #403f3f;
+            color: #fff;
+            border-radius: 10px;
+        }
+
+        .form-group label {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <h1 style="color: #1DA1F2;">{{all_data[0].name}}</h1>
+            <div class="form-group">
+                <label for="location">Location:</label>
+                <p>{{all_data[0].location}}</p>
+            </div>
+            <div class="form-group">
+                <label for="language">Favorite programming language:</label>
+                <p>{{all_data[0].language}}</p>
+            </div>
+            <div class="form-group">
+                <label for="database">Favorite relational database:</label>
+                {% if all_data[0].database %}
+                    <p>{{all_data[0].database}}</p>
+                {% else %}
+                    <p>No database selected.</p>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <label for="framework">Framework:</label>
+                {% if all_data[0].framework %}
+                    <p>{{all_data[0].framework}}</p>
+                {% else %}
+                    <p>No framework selected.</p>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <label>Comment:</label>
+                {% if all_data[0].comment %}
+                    <p>{{all_data[0].comment}}</p>
+                {% else %}
+                    <p>No comment provided.</p>
+                {% endif %}
+            </div>
+            <a href="{{ url_for('index') }}" class="btn btn-primary">Home</a>
+        </div>
+    </div>
+</body>
+</html>
